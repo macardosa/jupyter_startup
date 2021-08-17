@@ -4,6 +4,7 @@ Scripts and system configurations for running [JupyterLab](https://jupyter.org/)
 In a linux platform a systemd service named *jupyter.service* will be created and lauched conveniently. In macOS a similar service is created, although
 using lauchd daemon.
 Once installed the service can be conveniently started and stoped in the usual way according to the platform. Namely:
+
 **Linux:**
 ```bash
 systemctl start|stop|restart jupyter.service
