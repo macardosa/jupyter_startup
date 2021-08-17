@@ -1,9 +1,16 @@
 OS := $(shell uname -s)
 
-all: install start test
+all: build install start test
 	@echo "Now JupyterLab will be run at startup as a system daemon."
 	@echo "JupyterLab is reachable any time pointing your browser to http://localhost:8888/lab"
 	@echo "JupyterNotebook is reachable any time pointing your browser to http://localhost:8888/tree"
+
+build:
+ifeq ($(OS),Darwin)
+	@python build_service.py macOS
+else
+	@python build_service.py linux
+endif
 
 install:
 ifeq ($(OS),Darwin)
@@ -45,6 +52,14 @@ ifeq ($(OS),Darwin)
 else
 	@xdg-open http://localhost:8888/lab
 endif
+
+clean:
+ifeq ($(OS),Darwin)
+	@rm -f jupyter.plist startup.sh
+else
+	@rm -f jupyter.service
+endif
+
 
 .PHONY: install stop start all test
 
