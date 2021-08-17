@@ -6,7 +6,7 @@ PIDFile=/run/jupyter.pid
 ExecStart=/opt/miniconda3/bin/jupyter-lab --config=/home/macardosa/.jupyter/jupyter_lab_config.py --no-browser
 User=macardosa
 Group=macardosa
-WorkingDirectory=/home/macardosa/
+WorkingDirectory=/home/macardosa
 Restart=always
 RestartSec=10
 [Install]
